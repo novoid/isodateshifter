@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8; mode: python; -*-
-PROG_VERSION = u"Time-stamp: <2021-03-09 18:49:20 vk>"
+PROG_VERSION = u"Time-stamp: <2021-03-10 20:01:50 vk>"
 PROG_VERSION_DATE = PROG_VERSION[13:23]
 
 import time
@@ -44,7 +44,7 @@ gets processed and all ISO datestamps found will be shifted two days to the futu
 EPILOG = """
 :copyright: (c) by Karl Voit <tools@Karl-Voit.at>
 :license: GPL v3 or any later version
-:URL: https://github.com/novoid/FIXXME
+:URL: https://github.com/novoid/isodateshifter
 :bugreports: via github or <tools@Karl-Voit.at>
 :version: """ + PROG_VERSION_DATE + "\n·\n"
 

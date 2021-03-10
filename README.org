@@ -2,13 +2,13 @@
 
 This Python script compares a date provided by command line and a date
 found within a text file (in a specific format). Then, the text file
-is parsed and a modified version is printed to stdout with shifted
-date-stamps according to the difference of the two date-stamps from
+is parsed and a modified version is printed to stdout with *shifted
+date-stamps according to the difference of the two date-stamps* from
 the first step.
 
 ** Example
 
-: python3 isodateshifter.py --referenceday 2021-03-10 testfile.org
+: python3 isodateshifter.py  --referenceday 2021-03-10  testfile.org
 
 ... where =testfile.org= contains the string ~2021-03-07=referenceday~
 somewhere. This string can also be stored some kind of comment string
@@ -17,19 +17,25 @@ of course. Usually, this is associated with the "current day".
 In this example, those two date-stamps do differ by three days.
 
 Now, this script parses the file =testfile.org= once again and prints
-out a modified version where all ISO date-stamps of the form
+out a modified version where all [[https://en.wikipedia.org/wiki/ISO_8601][ISO date-stamps]] of the form
 =YYYY-MM-DD= are shifted by three days, which was the difference from
 above.
 
-If you want to capture the result in a file, use a syntax like:
+If you want to capture the result in a file named =result.org=, use a
+syntax like:
 
-: python3 isodateshifter.py --referenceday 2021-03-10 testfile.org > result.org
+: python3 isodateshifter.py  --referenceday 2021-03-10  testfile.org  > result.org
 
-Be cautious: there is no intelligent replace mechanism built-in that,
-e.g., will fix Org mode time-stamps including the day of the week or
-similar. It's just searching for =YYYY-MM-DD=-like expressions,
-interpreting it as a date-stamp and shifts it according to the
-difference provided.
+If the reference day from the command line parameter is prior to the
+reference day within the file, all date-stamps get shifted to the past
+according to their difference in days.
+
+Be cautious: there is /no intelligent replace mechanism/ or error
+handling built-in that, e.g., will fix Org mode time-stamps including
+the day of the week or similar. It's just searching for
+=YYYY-MM-DD=-like expressions, interpreting it as a date-stamp and
+shifts it according to the difference provided. So don't expect some
+kind of intelligence here.
 
 ** Why
 
@@ -81,7 +87,7 @@ optional arguments:
 
 :copyright: (c) by Karl Voit <tools@Karl-Voit.at>
 :license: GPL v3 or any later version
-:URL: https://github.com/novoid/FIXXME
+:URL: https://github.com/novoid/isodateshifter
 :bugreports: via github or <tools@Karl-Voit.at>
 :version: 2021-03-09
 ·
