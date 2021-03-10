@@ -1,0 +1,110 @@
+* isodateshifter
+
+This Python script compares a date provided by command line and a date
+found within a text file (in a specific format). Then, the text file
+is parsed and a modified version is printed to stdout with shifted
+date-stamps according to the difference of the two date-stamps from
+the first step.
+
+** Example
+
+: python3 isodateshifter.py --referenceday 2021-03-10 testfile.org
+
+... where =testfile.org= contains the string ~2021-03-07=referenceday~
+somewhere. This string can also be stored some kind of comment string
+of course. Usually, this is associated with the "current day".
+
+In this example, those two date-stamps do differ by three days.
+
+Now, this script parses the file =testfile.org= once again and prints
+out a modified version where all ISO date-stamps of the form
+=YYYY-MM-DD= are shifted by three days, which was the difference from
+above.
+
+If you want to capture the result in a file, use a syntax like:
+
+: python3 isodateshifter.py --referenceday 2021-03-10 testfile.org > result.org
+
+Be cautious: there is no intelligent replace mechanism built-in that,
+e.g., will fix Org mode time-stamps including the day of the week or
+similar. It's just searching for =YYYY-MM-DD=-like expressions,
+interpreting it as a date-stamp and shifts it according to the
+difference provided.
+
+** Why
+
+For preparing [[https://orgmode.org][Org mode]] demos, it is handy to have an example file with
+test data that results in a nice agenda with demo tasks and projects.
+However, when the day you are going to demo the show is different from
+the day you're preparing the file, you would like to shift all
+date-stamps so that you get the same agenda view you saw when
+preparing the file.
+
+Of course, this tool might be handy for many other use-cases as well.
+
+** Installation
+
+This tool needs [[http://www.python.org/downloads/][Python 3 to be installed]].
+
+You can install =isodateshifter= using the source code, e.g., by cloning
+the [[https://github.com/novoid/filetags/][GitHub repository of filetags]].
+
+** Usage
+
+ # #+BEGIN_SRC sh :results output :wrap src
+ # ./isodateshifter.py -h
+ # #+END_SRC
+
+#+begin_src
+usage: ./isodateshifter.py [-h] -r "ISO-day of reference" [-v] [-q]
+                           [--version]
+                           FILE
+
+This script shifts ISO dates within a file relative to a reference day.
+
+You need a string like "2021-03-07=referenceday" anywhere within the file, typically as a comment.
+
+When you call this script with the parameter "-r 2021-03-09" and a file name, this file name then
+gets processed and all ISO datestamps found will be shifted two days to the future.
+
+positional arguments:
+  FILE                  the file to modify
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -r "ISO-day of reference", --referenceday "ISO-day of reference"
+                        This is the reference day which is compared to the old
+                        reference day stored within the file
+  -v, --verbose         Enable verbose mode
+  -q, --quiet           Enable quiet mode
+  --version             Display version and exit
+
+:copyright: (c) by Karl Voit <tools@Karl-Voit.at>
+:license: GPL v3 or any later version
+:URL: https://github.com/novoid/FIXXME
+:bugreports: via github or <tools@Karl-Voit.at>
+:version: 2021-03-09
+·
+#+end_src
+
+** Changelog
+
+- 2021-03-10: first version on GitHub
+
+* How to Thank Me
+
+I'm glad you like my tools. If you want to support me:
+
+- Send old-fashioned *postcard* per snailmail - I love personal feedback!
+  - see [[http://tinyurl.com/j6w8hyo][my address]]
+- Send feature wishes or improvements as an issue on GitHub
+- Create issues on GitHub for bugs
+- Contribute merge requests for bug fixes
+- Check out my other cool [[https://github.com/novoid][projects on GitHub]]
+
+* Local Variables                                                  :noexport:
+# Local Variables:
+# mode: auto-fill
+# mode: flyspell
+# eval: (ispell-change-dictionary "en_US")
+# End:

@@ -1,0 +1,17 @@
+# 2021-03-07=referenceday
+
+* Example file
+:PROPERTIES:
+:CREATED:  [2021-03-08 Mon 22:47]
+:END:
+
+This is a test file for demonstrating the functionality of =isodateshifter.py=.
+
+All occurrences of ISO datestamps in the form of 2021-03-08 or 2021-03-09 will be
+moved relatively to the difference in days of the =referenceday= used
+in the comment above as well as the =--referenceday= command line parameter.
+
+Datestamp: <2021-03-05 Fri> [2021-03-05 Fri]
+
+Timestamp: <2021-03-07 Sun 22:47> [2021-03-07 Sun 22:47] 
+
